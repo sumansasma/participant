@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Participants</title>
+</head>
+<body>
+    <h1>Registered Participants</h1>
+    <table id="participantsTable">
+        <!-- Table headers go here -->
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Participant details will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // participants.html
+
+document.addEventListener('DOMContentLoaded', () => {
+    const participantsTable = document.getElementById('participantsTable');
+
+    // Function to fetch participants from the server and populate the table
+    async function fetchParticipants() {
+        try {
+            const response = await fetch('http://localhost:3000/api/participants');
+            if (!response.ok) {
+                throw new Error('Error fetching participants.');
+            }
+            const participants = await response.json();
+
+            // Populate the table with participant details
+            const tbody = participantsTable.querySelector('tbody');
+            tbody.innerHTML = ''; // Clear existing rows
+
+            participants.forEach(participant => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${participant.name}</td>
+                    <td>${participant.phoneNumber}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Error fetching participants:', error);
+        }
+    }
+
+    // Fetch and display participant data when the page loads
+    fetchParticipants();
+});
+
+    </script>
+
+</body>
+</html>

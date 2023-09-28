@@ -1,0 +1,30 @@
+<!-- registerParticipant.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Participant</title>
+    <link rel="stylesheet" href="/test/style.css">
+</head>
+<body>
+    <h1>Register Participant</h1>
+    <form id="participantForm">
+        <label for="eventNameSelect">Select Event:</label>
+        <select id="eventNameSelect" required>
+            <!-- Event options will be populated dynamically -->
+        </select><br><br>
+
+        <label for="participantName">Participant Name:</label>
+        <input type="text" id="participantName" required><br><br>
+        
+        <label for="participantPhone">Phone Number:</label>
+        <input type="tel" id="participantPhone" required pattern="[0-9]{10}"><br><br>
+        
+        <button type="submit">Register Participant</button>
+    </form>
+
+    <script src="/test/participant.js"></script>
+</body>
+</html>
